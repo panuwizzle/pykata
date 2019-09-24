@@ -17,7 +17,7 @@ def num_to_word(num: int) -> str:
         15: "fifteen",
         16: "sixteen",
         17: "seventeen",
-        18: "eightteen",
+        18: "eighteen",
         19: "nineteen",
         20: "twenty",
         30: "thirty",
@@ -30,15 +30,17 @@ def num_to_word(num: int) -> str:
         100: "hundred",
         1000: "thousand"
     }
-    base = [1000, 100, 10]
+    bases = [1000, 100, 10, 1]
+    digits = {}
     acc = ""
-    if num < 10:
-        return words[num]
 
-    for b in base:
-        h = num // b
-        if h > 0:
-            acc += words[h] + words[b]
-            num -= (h * b)
+    for base in bases:
+        digits[base] = num // base
+        num = num % base
+
+    for b, v in digits.items():
+        if v > 0:
+            acc += (words[v] + words[b])
 
     return acc
+
