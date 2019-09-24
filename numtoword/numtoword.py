@@ -1,5 +1,6 @@
 def num_to_word(num: int) -> str:
     words = {
+        0: "",
         1: "one",
         2: "two",
         3: "three",
@@ -30,17 +31,19 @@ def num_to_word(num: int) -> str:
         100: "hundred",
         1000: "thousand"
     }
+
     bases = [1000, 100, 10, 1]
     digits = {}
-    acc = ""
+    acc = []
 
     for base in bases:
         digits[base] = num // base
         num = num % base
 
-    for b, v in digits.items():
-        if v > 0:
-            acc += (words[v] + words[b])
+    for d, v in digits.items():
+        if (d * v) < 100:
+            acc.append(words[d * v])
+        else:
+            acc.append(words[v] + words[d])
 
-    return acc
-
+    return "".join(acc)

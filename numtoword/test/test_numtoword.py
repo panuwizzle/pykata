@@ -24,6 +24,9 @@ def test_get_5_show_five():
 def test_get_6_show_six():
     assert "six" == num_to_word(6)
 
+def test_get_15_show_eighteen():
+    assert "fifteen" == num_to_word(15)
+
 def test_get_18_show_eighteen():
     assert "eighteen" == num_to_word(18)
 
