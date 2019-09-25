@@ -1,57 +1,49 @@
 from numtoword.numtoword import num_to_word
+import unittest
 
 
-# below 20
-def test_get_1_show_one():
-    assert "one" == num_to_word(1)
+class TestNumToWord(unittest.TestCase):
+    def test_one(self):
+        assert "one" == num_to_word(1)
 
-def test_get_2_show_two():
-    assert "two" == num_to_word(2)
+    def test_two(self):
+        assert "two" == num_to_word(2)
 
+    def test_ten(self):
+        assert "ten" == num_to_word(10)
 
-def test_get_3_show_three():
-    assert "three" == num_to_word(3)
+    def test_eleven(self):
+        assert "eleven" == num_to_word(11)
 
+    def test_nineteen(self):
+        assert "nineteen" == num_to_word(19)
 
-def test_get_4_show_four():
-    assert "four" == num_to_word(4)
+    def test_twenty(self):
+        assert "twenty" == num_to_word(20)
 
+    def test_twenty_one(self):
+        assert "twentyone" == num_to_word(21)
 
-def test_get_5_show_five():
-    assert "five" == num_to_word(5)
+    def test_twenty_two(self):
+        assert "twentytwo" == num_to_word(22)
 
+    def test_thirty(self):
+        assert "thirty" == num_to_word(30)
 
-def test_get_6_show_six():
-    assert "six" == num_to_word(6)
+    def test_fifty_three(self):
+        assert "fiftythree" == num_to_word(53)
 
-def test_get_15_show_eighteen():
-    assert "fifteen" == num_to_word(15)
+    def test_one_hundred(self):
+        assert "onehundred" == num_to_word(100)
 
-def test_get_18_show_eighteen():
-    assert "eighteen" == num_to_word(18)
+    def test_three_hundred(self):
+        assert "threehundred" == num_to_word(300)
 
-def test_get_20_show_twenty():
-    assert "twenty" == num_to_word(20)
+    def test_one_hundred_twenty_three(self):
+        assert "onehundredtwentythree" == num_to_word(123)
 
-def test_get_23_show_twenty():
-    assert "twentythree" == num_to_word(23)
+    def test_one_thousand(self):
+        assert "onethousand" == num_to_word(1000)
 
-# hundred
-def test_get_100_show_hundred():
-    assert "onehundred" == num_to_word(100)
-
-def test_get_123_show_onehundredtwentythree():
-    assert "onehundredtwentythree" == num_to_word(123)
-
-def test_200():
-    assert "twohundred" == num_to_word(200)
-    
-def test_300():
-    assert "threehundred" == num_to_word(300)
-
-# thousand
-def test_1234():
-    assert "onethousandtwohundredthirtyfour" == num_to_word(1234)
-
-def test_2000():
-    assert "twothousand" == num_to_word(2000)
+    def test_one_thousand_two_hundred_thirty_two(self):
+        assert "onethousandtwohundredthirtytwo" == num_to_word(1232)

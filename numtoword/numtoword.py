@@ -1,4 +1,4 @@
-def num_to_word(num: int) -> str:
+def num_to_word(num):
     words = {
         0: "",
         1: "one",
@@ -13,8 +13,8 @@ def num_to_word(num: int) -> str:
         10: "ten",
         11: "eleven",
         12: "twelve",
-        13: "thirdteen",
-        14: "fourteen",
+        13: "thirteen",
+        14: "forteen",
         15: "fifteen",
         16: "sixteen",
         17: "seventeen",
@@ -22,28 +22,35 @@ def num_to_word(num: int) -> str:
         19: "nineteen",
         20: "twenty",
         30: "thirty",
-        40: "fourty",
+        40: "forty",
         50: "fifty",
         60: "sixty",
         70: "seventy",
         80: "eighty",
         90: "ninety",
-        100: "hundred",
-        1000: "thousand"
     }
+    # convert to string
+    str_num = str(num)
 
-    bases = [1000, 100, 10, 1]
-    digits = {}
-    acc = []
+    # position
+    length = len(str_num)
 
-    for base in bases:
-        digits[base] = num // base
-        num = num % base
+    acc = ""
+    for pos in range(length):
 
-    for d, v in digits.items():
-        if (d * v) < 100:
-            acc.append(words[d * v])
+        base = 10 ** (length - (pos + 1))
+        num_at_pos = int(str_num[pos])
+
+        if base == 10 and num_at_pos < 2:
+            that = int(str_num[pos] + str_num[pos + 1])
+            acc += words.get(that)
+            break
+        elif base == 100 and num_at_pos > 0:
+            acc += words.get(num_at_pos) + "hundred"
+        elif base == 1000:
+            acc += words.get(num_at_pos) + "thousand"
         else:
-            acc.append(words[v] + words[d])
+            that = base * num_at_pos
+            acc += words.get(that)
 
-    return "".join(acc)
+    return acc
